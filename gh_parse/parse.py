@@ -25,7 +25,7 @@ def find_team_branch(team):
     for branch in repo.get_branches():
         if valid_branch(branch, team):
             return branch
-    raise LookupError(f"Team `{team}` not found")
+    raise LookupError(f"Branch for team `{team}` not found")
 
 
 def find_readme_for_(team):
@@ -33,5 +33,5 @@ def find_readme_for_(team):
     team_branch = find_team_branch(team)
     readme = get_readme_contents(team_branch)
     if not readme:
-        raise LookupError(f"Team `{team}` not found")
+        raise LookupError(f"No README.md file exists for team `{team}`")
     return readme
